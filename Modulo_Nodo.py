@@ -1,6 +1,6 @@
 class Nodo:
 
-    def __init__(self, dato=None):
+    def __init__(self, dato):
         self.dato = dato
         self.enlace = None
 
@@ -15,3 +15,7 @@ class Nodo:
     def setEnlace(self, enlace):
         self.enlace = enlace
         pass
+
+    def __str__(self) -> str:
+        return f"[ {self.dato} , {self.enlace}]"
+

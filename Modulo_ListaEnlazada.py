@@ -1,19 +1,6 @@
 
 from  Modulo_Nodo import Nodo
 
-#1) Crear lista enlazada
-#2) Agregar elemento
-# 		2a) Al inicio
-#2b) Al final
-#2c) En posicion especifica
-#3) Eliminar elemento
-#4) Recorrer lista
-#5) Buscar elemento
-#6) Vacia
-#7) Cantidad de elementos
-#8) Vaciar lista
-
-
 class ListaEnlazada:
 
     def __init__(self):
@@ -22,16 +9,38 @@ class ListaEnlazada:
 
     def agregarInicio(self, dato):
         nn = Nodo(dato)
-        if (self.nodoInicio == None):
-            self.nodoInicio = nn
+        if (self.vacia() == True):
+            self.nodoInicio = self.nodoFin = nn
         else:
-            nn.setEnlace(self.nodoInicio)
+            nn.enlace = self.nodoInicio
             self.nodoInicio = nn
-    def mostrarElementos(self):
-        nodAct = Nodo()
-        if (self.nodoInicio==None):
+
+    def vacia(self):
+        if self.nodoInicio == None:
+            return True
 
 
+    def mostrarPromedio(self, lista):
+        promedio = 0
+        contador = 0
+        nodoActual = lista.nodoInicio
+
+        while nodoActual != None:
+            promedio = promedio + nodoActual.dato
+            nodoActual = nodoActual.enlace
+            contador = contador + 1
+        promedio = promedio / contador
+        cadena = ""
+        if promedio < 10:
+            cadena = "Congelante"
+        elif promedio <= 20:
+            cadena = "Frio"
+        elif promedio < 30:
+            cadena = "Normal"
+        else:
+            cadena = "Alta"
+
+        return str(str(promedio) +" " + cadena)
 
 l = ListaEnlazada()
 l.agregarInicio(1)
